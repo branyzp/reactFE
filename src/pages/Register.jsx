@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
 	const [firstname, setFirstname] = useState({ firstname: '', dirty: false });
@@ -7,6 +8,9 @@ function Register() {
 	const [password, setPassword] = useState({ password: '', dirty: false });
 	const [checkpw, setCheckpw] = useState({ checkpw: '', dirty: false });
 	const [email, setEmail] = useState({ email: '', dirty: false });
+	const [data, setData] = useState('');
+
+	let api = 'http://localhost:8000/api/register';
 
 	let navigate = useNavigate();
 
@@ -14,12 +18,27 @@ function Register() {
 		navigate(route);
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		axios
+			.post(api, {
+				username: email.email,
+				password: password.password,
+				firstname: firstname.firstname,
+				lastname: lastname.lastname,
+			})
+			.then((res) => setData(res.data))
+			.then(console.log(data))
+			.catch((err) => console.log(err));
+	};
+
 	return (
 		<div className="flex my-32 text-center items-center justify-center">
 			<div className=" max-w-lg">
 				<h1 className="text-xl tracking-tight">Signup Page</h1>
 
-				<form>
+				<form onSubmit={(e) => handleSubmit(e)}>
 					<div className="grid gap-6 mb-6 md:grid-cols-2">
 						<div className="firstname">
 							<label
