@@ -28,9 +28,16 @@ function Register() {
 				firstname: firstname.firstname,
 				lastname: lastname.lastname,
 			})
-			.then((res) => setData(res.data))
-			.then(console.log(data))
-			.catch((err) => console.log(err));
+			.then((res) => {
+				setData(res.data);
+				console.log(res.data);
+				navigate('/login');
+				alert('Registered successfully');
+			})
+			.catch((err) => {
+				console.log(err);
+				alert('Register failed');
+			});
 	};
 
 	return (
@@ -190,7 +197,7 @@ function Register() {
 
 					<button
 						type="submit"
-						className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100"
+						className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 hover:scale-105 ease-in duration-100"
 					>
 						Register new account
 					</button>
@@ -202,7 +209,7 @@ function Register() {
 						onClick={() => {
 							handleClick('/login');
 						}}
-						className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100"
+						className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 hover:scale-105 ease-in duration-100"
 					>
 						Login
 					</button>

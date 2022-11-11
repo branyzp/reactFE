@@ -10,7 +10,7 @@ function Footer() {
 						Developed with React and Flask
 					</p>
 					<div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
-						<button className=" rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100">
+						<button className=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-xl hover:scale-105 ease-in duration-100 ">
 							<a
 								href="https://www.linkedin.com/in/branyzp/"
 								target={'_blank'}
@@ -19,7 +19,7 @@ function Footer() {
 								<AiFillLinkedin />
 							</a>
 						</button>
-						<button className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100">
+						<button className=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-xl hover:scale-105 ease-in duration-100">
 							<a
 								href="https://github.com/branyzp"
 								target={'_blank'}
@@ -28,7 +28,7 @@ function Footer() {
 								<AiFillGithub />
 							</a>
 						</button>
-						<button className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100">
+						<button className=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-xl hover:scale-105 ease-in duration-100">
 							<a
 								href="mailto:Branyzp@gmail.com"
 								target={'_blank'}

@@ -1,15 +1,39 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 function Login() {
 	const [password, setPassword] = useState({ password: '', dirty: false });
 	const [email, setEmail] = useState({ email: '', dirty: false });
+	const [data, setData] = useState('');
+
+	let api = 'http://localhost:8000/api/login';
 
 	let navigate = useNavigate();
 
 	const handleClick = (route) => {
-    navigate(route);
+		navigate(route);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		axios
+			.get(api, {
+				username: email.email,
+				password: password.password,
+			})
+			.then((res) => {
+				setData(res.data);
+				console.log(res.data);
+				navigate('/dashboard');
+				alert('Logged in successfully');
+			})
+			.catch((err) => {
+				console.log(err);
+				alert('Login failed');
+			});
 	};
 
 	return (
@@ -80,7 +104,7 @@ function Login() {
 
 					<button
 						type="submit"
-						className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100"
+						className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 hover:scale-105 ease-in duration-100"
 					>
 						Login existing account
 					</button>
@@ -92,7 +116,7 @@ function Login() {
 						onClick={() => {
 							handleClick('/register');
 						}}
-						className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100"
+						className="rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500  hover:scale-105 ease-in duration-100"
 					>
 						Register
 					</button>
