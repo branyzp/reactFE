@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-function Login() {
+function Login({ setIsAuthenticated }) {
 	const [password, setPassword] = useState({ password: '', dirty: false });
 	const [email, setEmail] = useState({ email: '', dirty: false });
-	const [data, setData] = useState('');
+	// const [data, setData] = useState('');
 
 	let api = 'http://localhost:8000/api/login';
 
@@ -20,15 +20,20 @@ function Login() {
 		e.preventDefault();
 
 		axios
-			.get(api, {
+			.post(api, {
 				username: email.email,
 				password: password.password,
 			})
 			.then((res) => {
-				setData(res.data);
+				// setData(res.data);
 				console.log(res.data);
-				navigate('/dashboard');
-				alert('Logged in successfully');
+				if (res.data.access_token) {
+					setIsAuthenticated(true);
+					navigate('/dashboard');
+					alert('Logged in successfully');
+				} else {
+					alert('Login failed');
+				}
 			})
 			.catch((err) => {
 				console.log(err);
@@ -41,7 +46,7 @@ function Login() {
 			<div className="">
 				<h1 className="text-xl tracking-tight">Login Page</h1>
 
-				<form>
+				<form onSubmit={(e) => handleSubmit(e)}>
 					<div className="grid gap-6 mb-6 md:grid-cols-2"></div>
 					<div className="mb-6">
 						<label

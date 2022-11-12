@@ -7,7 +7,24 @@ function Footer() {
 			<div className="flex justify-center items-center w-full h-full px-2">
 				<div className="flex">
 					<p className="uppercase tracking-widest py-3">
-						Developed with React and Flask
+						Developed with{' '}
+						<a
+							className="text-blue-500 font-semibold"
+							href="https://reactjs.org/docs/create-a-new-react-app.html"
+							target={'_blank'}
+							rel={'noopener noreferrer'}
+						>
+							React
+						</a>{' '}
+						and{' '}
+						<a
+							className="text-blue-500 font-semibold"
+							href="https://flask.palletsprojects.com/en/2.2.x/"
+							target={'_blank'}
+							rel={'noopener noreferrer'}
+						>
+							Flask
+						</a>
 					</p>
 					<div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
 						<button className=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-xl hover:scale-105 ease-in duration-100 ">

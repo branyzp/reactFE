@@ -22,7 +22,7 @@ function Index() {
 						onClick={() => {
 							handleClick('/login');
 						}}
-						className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100"
+						className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-xl hover:scale-105 ease-in duration-100"
 					>
 						Login
 					</button>
@@ -33,7 +33,7 @@ function Index() {
 						onClick={() => {
 							handleClick('/register');
 						}}
-						className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded hover:scale-105 ease-in duration-100 "
+						className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded-xl hover:scale-105 ease-in duration-100 "
 					>
 						Register
 					</button>
