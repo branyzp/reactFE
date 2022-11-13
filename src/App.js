@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-	BrowserRouter,
-	Routes,
-	Route,
-	Navigate,
-	useNavigate,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
@@ -18,8 +12,10 @@ import { DarkModeProvider } from './context/DarkModeContext';
 
 function App() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [userdetails, setUserDetails] = useState('');
 
 	console.log('isAuthenticated: ' + isAuthenticated);
+	console.log('User: ' + userdetails);
 
 	return (
 		<div>
@@ -31,11 +27,16 @@ function App() {
 						<Route path="/register" element={<Register />} />
 						<Route
 							path="/login"
-							element={<Login setIsAuthenticated={setIsAuthenticated} />}
+							element={
+								<Login
+									setIsAuthenticated={setIsAuthenticated}
+									setUserDetails={setUserDetails}
+								/>
+							}
 						/>
 						<Route
 							path="/dashboard"
-							element={<Dashboard isAuthenticated={isAuthenticated} />}
+							element={<Dashboard isAuthenticated={isAuthenticated} userdetails={userdetails} />}
 						/>
 						<Route
 							path="/logout"
@@ -43,6 +44,7 @@ function App() {
 								<Logout
 									isAuthenticated={isAuthenticated}
 									setIsAuthenticated={setIsAuthenticated}
+									setUserDetails={setUserDetails}
 								/>
 							}
 						/>

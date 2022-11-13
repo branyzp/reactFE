@@ -10,7 +10,7 @@ function Footer() {
 		<div
 			className={
 				darkmode
-					? 'bg-slate-900 bg-gradient-to-tr from-slate-800 text-slate-200 bg-opacity-50 fixed w-full h-20 bottom-0 shadow-xl z-[100] backdrop-blur-sm '
+					? 'bg-slate-900 bg-gradient-to-tr from-slate-800 text-slate-200 bg-opacity-20 fixed w-full h-20 bottom-0 shadow-xl z-[100] backdrop-blur-sm '
 					: 'bg-slate-200 bg-opacity-50 fixed w-full h-20 bottom-0 shadow-xl z-[100] backdrop-blur-sm '
 			}
 		>
