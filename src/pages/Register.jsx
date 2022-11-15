@@ -208,11 +208,13 @@ function Register() {
 							)}
 							{console.log(password.password === checkpw.checkpw)}
 
-							{password.password === checkpw.checkpw && (
-								<p className=" text-red-500 text-sm font-light">
-									password does not match.
-								</p>
-							)}
+							{password.password &&
+								checkpw.checkpw &&
+								password.password !== checkpw.checkpw && (
+									<p className=" text-red-500 text-sm font-light">
+										password does not match.
+									</p>
+								)}
 						</div>
 
 						<button
