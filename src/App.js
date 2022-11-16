@@ -6,9 +6,10 @@ import Dashboard from './pages/Dashboard';
 import Index from './pages/Index';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { useState, useEffect, useContext } from 'react';
+import { useState } from 'react';
 import Logout from './components/Logout';
 import { DarkModeProvider } from './context/DarkModeContext';
+import UserDetails from './pages/UserDetails';
 
 function App() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -36,7 +37,12 @@ function App() {
 						/>
 						<Route
 							path="/dashboard"
-							element={<Dashboard isAuthenticated={isAuthenticated} userdetails={userdetails} />}
+							element={
+								<Dashboard
+									isAuthenticated={isAuthenticated}
+									userdetails={userdetails}
+								/>
+							}
 						/>
 						<Route
 							path="/logout"
@@ -45,6 +51,15 @@ function App() {
 									isAuthenticated={isAuthenticated}
 									setIsAuthenticated={setIsAuthenticated}
 									setUserDetails={setUserDetails}
+								/>
+							}
+						/>
+						<Route
+							path="user details"
+							element={
+								<UserDetails
+									isAuthenticated={isAuthenticated}
+									userdetails={userdetails}
 								/>
 							}
 						/>

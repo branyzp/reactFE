@@ -3,7 +3,7 @@ import { DarkModeContext } from '../context/DarkModeContext';
 import LightSwitch from './LightSwitch';
 import NavbarItem from './NavbarItem';
 const navBarArr = ['login', 'register'];
-const authenticatedNavBarArr = ['dashboard', 'logout'];
+const authenticatedNavBarArr = ['dashboard', 'user details', 'logout'];
 
 function Navbar({ isAuthenticated }) {
 	const { darkmode } = useContext(DarkModeContext);
