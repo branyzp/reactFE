@@ -4,15 +4,13 @@ import { DarkModeContext } from '../context/DarkModeContext';
 
 function Dashboard({ userdetails }) {
 	const { darkmode } = useContext(DarkModeContext);
-	const [newEmail, setNewEmail] = useState(userdetails[1]);
-	const [newFirstname, setNewFirstname] = useState(userdetails[3]);
-	const [newLastname, setNewLastname] = useState(userdetails[4]);
 
-	const [updateMode, setUpdateMode] = useState(false);
-	const [updatepwMode, setUpdatepwMode] = useState(false);
+	// useEffect(() => {
 
-	let updateuserdetails_api = 'http://localhost:8000/api/updateuser';
-	let updatepw_api = 'http://localhost:8000/api/updatepw';
+	//   return () => {
+	// 	second
+	//   }
+	// }, [third])
 
 	return (
 		<div
@@ -23,7 +21,7 @@ function Dashboard({ userdetails }) {
 			}
 		>
 			<div className="my-32 text-center">
-				
+				<h1 className="text-3xl font-bold tracking-wide">Dashboard Page</h1>
 			</div>
 		</div>
 	);

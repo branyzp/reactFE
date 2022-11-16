@@ -11,7 +11,6 @@ function ChangePw({ userdetails }) {
 	const [oldPw, setOldPw] = useState(' ');
 
 	let updatepw_api = 'http://localhost:8000/api/updatepw';
-	console.log(updatePw);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

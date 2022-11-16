@@ -206,7 +206,6 @@ function Register() {
 									please enter a password.
 								</p>
 							)}
-							{console.log(password.password === checkpw.checkpw)}
 
 							{password.password &&
 								checkpw.checkpw &&
