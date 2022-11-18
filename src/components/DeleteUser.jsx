@@ -2,22 +2,29 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function DeleteUser({ userdetails }) {
+function DeleteUser({ userdetails, setIsAuthenticated, setUserDetails }) {
 	const { darkmode } = useContext(DarkModeContext);
 	const [deleteMode, setDeleteMode] = useState(false);
 
 	let deleteuser_api = 'http://localhost:8000/api/deleteuser';
+
+	let navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		console.log(userdetails[0]);
 		axios
-			.delete(deleteuser_api, {
-				id: userdetails[0],
+			.delete(deleteuser_api, { data: { id: userdetails[0] } })
+			.then((res) => {
+				console.log(res.data);
+				setIsAuthenticated(false);
+				setUserDetails('');
+				navigate('/login');
 			})
-			.then((res) => console.log(res.data));
+			.catch((err) => console.log(err));
 	};
 
 	const toggleDeleteMode = (e) => {

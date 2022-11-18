@@ -14,15 +14,19 @@ function ChangePw({ userdetails }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setUpdatePw(!updatePw);
 
-		axios
-			.put(updatepw_api, {
-				oldPassword: oldPw,
-				newPassword: changePw,
-				id: userdetails[0],
-			})
-			.then((res) => console.log(res.data));
+		if (changePw === checkChangePw) {
+			setUpdatePw(!updatePw);
+			axios
+				.put(updatepw_api, {
+					oldPassword: oldPw,
+					newPassword: changePw,
+					id: userdetails[0],
+				})
+				.then((res) => console.log(res.data));
+		} else {
+			alert('Passwords do not match');
+		}
 	};
 
 	const toggleUpdateMode = (e) => {
@@ -62,11 +66,16 @@ function ChangePw({ userdetails }) {
 							type="password"
 							className=" bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							onChange={(e) => {
-								setChangePw(e.target.value);
+								setCheckChangePw(e.target.value);
 							}}
 							required="password"
 						></input>
 					</p>
+					{changePw && checkChangePw && changePw !== checkChangePw && (
+						<p className=" text-red-500 text-sm font-light">
+							password does not match.
+						</p>
+					)}
 					<button
 						type="submit"
 						className={

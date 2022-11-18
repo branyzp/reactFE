@@ -10,6 +10,7 @@ import { useState } from 'react';
 import Logout from './components/Logout';
 import { DarkModeProvider } from './context/DarkModeContext';
 import UserDetails from './pages/UserDetails';
+import Expenses from './pages/Expenses';
 
 function App() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -45,6 +46,15 @@ function App() {
 							}
 						/>
 						<Route
+							path="/expenses"
+							element={
+								<Expenses
+									isAuthenticated={isAuthenticated}
+									userdetails={userdetails}
+								/>
+							}
+						/>
+						<Route
 							path="/logout"
 							element={
 								<Logout
@@ -60,6 +70,8 @@ function App() {
 								<UserDetails
 									isAuthenticated={isAuthenticated}
 									userdetails={userdetails}
+									setIsAuthenticated={setIsAuthenticated}
+									setUserDetails={setUserDetails}
 								/>
 							}
 						/>

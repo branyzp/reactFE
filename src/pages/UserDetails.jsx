@@ -4,14 +4,30 @@ import { DarkModeContext } from '../context/DarkModeContext';
 import ChangePw from '../components/ChangePw';
 import DeleteUser from '../components/DeleteUser';
 
-function UserDetails({ userdetails }) {
+function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 	const { darkmode } = useContext(DarkModeContext);
 	const [newEmail, setNewEmail] = useState(userdetails[1]);
 	const [newFirstname, setNewFirstname] = useState(userdetails[3]);
 	const [newLastname, setNewLastname] = useState(userdetails[4]);
+	const [joinedDate, setJoinedDate] = useState(userdetails[5]);
+	let formattedJoinDate = new Date(joinedDate);
+
+	const monthNames = [
+		'Jan',
+		'Feb',
+		'Mar',
+		'Apr',
+		'May',
+		'June',
+		'July',
+		'Aug',
+		'Sep',
+		'Oct',
+		'Nov',
+		'Dec',
+	];
 
 	const [updateMode, setUpdateMode] = useState(false);
-	const [updatepwMode, setUpdatepwMode] = useState(false);
 
 	let updateuserdetails_api = 'http://localhost:8000/api/updateuser';
 
@@ -109,7 +125,11 @@ function UserDetails({ userdetails }) {
 							</button>
 						</form>
 						<ChangePw userdetails={userdetails} />
-						<DeleteUser userdetails={userdetails} />
+						<DeleteUser
+							userdetails={userdetails}
+							setIsAuthenticated={setIsAuthenticated}
+							setUserDetails={setUserDetails}
+						/>
 					</div>
 				) : (
 					<div>
@@ -121,6 +141,11 @@ function UserDetails({ userdetails }) {
 							<p className="text-md py-2">Email: {newEmail}</p>
 							<p className="text-md py-2">First Name: {newFirstname}</p>
 							<p className="text-md py-2">Last Name: {newLastname}</p>
+							<p className="text-md py-2">
+								Joined Date: {formattedJoinDate.getDate()}{' '}
+								{monthNames[formattedJoinDate.getMonth()]},{' '}
+								{formattedJoinDate.getFullYear()}
+							</p>
 							<button
 								className={
 									darkmode
@@ -133,7 +158,11 @@ function UserDetails({ userdetails }) {
 							</button>
 
 							<ChangePw userdetails={userdetails} />
-							<DeleteUser userdetails={userdetails} />
+							<DeleteUser
+								userdetails={userdetails}
+								setIsAuthenticated={setIsAuthenticated}
+								setUserDetails={setUserDetails}
+							/>
 						</div>
 					</div>
 				)}
