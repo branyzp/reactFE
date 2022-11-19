@@ -32,7 +32,7 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 	let local = 'http://localhost:8000';
 	let deploy = 'https://kiamsiap.onrender.com/';
 
-	let updateuserdetails_api = `{deploy}api/updateuser`;
+	let updateuserdetails_api = `${deploy}api/updateuser`;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

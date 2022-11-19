@@ -24,9 +24,22 @@ function Index() {
 					Hi, this web app was developed using React and Flask to facilitate my
 					learning of these technologies.
 				</h1>
+				<h1 className="text-sm tracking-tight">
+					I built this to try out simple user registration and login and will
+					add additional features as I go along. <br /> <br />
+					some features include: <br />
+					Expense tracking <br />
+					- full expenses CRUD <br />
+					- graphs <br />
+				</h1>
 				<br />
 
-				<div className="">
+				<h1 className="text-md tracking-tight">
+					If you'd like to see how I progress, check out my github below <br />
+					Thanks for the visit!
+				</h1>
+
+				{/* <div className="">
 					<div className="">
 						<button
 							onClick={() => {
@@ -56,7 +69,7 @@ function Index() {
 							Register
 						</button>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);
