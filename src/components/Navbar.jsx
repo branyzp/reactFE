@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
 import LightSwitch from './LightSwitch';
 import NavbarItem from './NavbarItem';
-const navBarArr = ['login', 'register'];
+const navBarArr = ['register', 'login'];
 const authenticatedNavBarArr = [
 	'dashboard',
 	'expenses',

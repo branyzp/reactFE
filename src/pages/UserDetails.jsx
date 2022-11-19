@@ -55,20 +55,26 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 		<div
 			className={
 				darkmode
-					? 'dark bg-slate-900 text-slate-100 min-h-screen  py-10'
+					? 'dark bg-slate-900 text-slate-100 min-h-screen py-10'
 					: 'min-h-screen py-10'
 			}
 		>
 			<div className="flex my-32 text-center items-center justify-center">
 				{updateMode ? (
-					<div>
+					<div
+						className={
+							darkmode
+								? 'bg-slate-700 shadow-2xl shadow-orange-500 py-10 px-40 rounded-2xl '
+								: 'bg-slate-100 shadow-2xl shadow-slate-500 py-10 px-40 rounded-2xl '
+						}
+					>
 						<h1 className="text-3xl font-bold tracking-wide">
 							Update User Details
 						</h1>
-						<p className=" text-md py-2">Edit your details</p>
+						<p className=" text-sm tracking-tighter py-2">Edit your details</p>
 						<form onSubmit={(e) => handleSubmit(e)}>
 							<p className="py-2">
-								Email:{' '}
+								<span className=" font-extrabold">Email:</span>{' '}
 								<input
 									className=" bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 									type="email"
@@ -80,7 +86,7 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 								></input>
 							</p>
 							<p className="py-2">
-								First Name:{' '}
+								<span className=" font-extrabold">First Name:</span>{' '}
 								<input
 									type="text"
 									required
@@ -92,7 +98,7 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 								></input>
 							</p>
 							<p className="py-2">
-								Last Name:{' '}
+								<span className=" font-extrabold">Last Name:</span>{' '}
 								<input
 									type="text"
 									required
@@ -132,17 +138,40 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 						/>
 					</div>
 				) : (
-					<div>
-						<h1 className="text-3xl font-bold tracking-wide">
-							User Details Page
-						</h1>
-						<div>
-							<p className=" text-md py-2">Welcome, {newFirstname}.</p>
-							<p className="text-md py-2">Email: {newEmail}</p>
-							<p className="text-md py-2">First Name: {newFirstname}</p>
-							<p className="text-md py-2">Last Name: {newLastname}</p>
-							<p className="text-md py-2">
-								Joined Date: {formattedJoinDate.getDate()}{' '}
+					<div
+						className={
+							darkmode
+								? 'bg-slate-700 shadow-2xl shadow-orange-500 py-10 px-40 rounded-2xl '
+								: 'bg-slate-100 shadow-2xl shadow-slate-500 py-10 px-40 rounded-2xl '
+						}
+					>
+						<h1 className="text-3xl font-bold tracking-wide">User Info</h1>
+
+						<div className="">
+							<img
+								src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+								alt=""
+								width="20%"
+								className="block ml-auto mr-auto"
+							/>
+							<p className=" text-sm tracking-tighter py-2">
+								Welcome, {newFirstname}.
+							</p>
+							<p className="text-md tracking-tight py-2">
+								{' '}
+								<span className=" font-extrabold">Email:</span> {newEmail}
+							</p>
+							<p className="text-md tracking-tight py-2">
+								<span className=" font-extrabold">First Name:</span>{' '}
+								{newFirstname}
+							</p>
+							<p className="text-md tracking-tight py-2">
+								<span className=" font-extrabold">Last Name: </span>
+								{newLastname}
+							</p>
+							<p className="text-md tracking-tight py-2">
+								<span className=" font-extrabold">Joined Date</span>:{' '}
+								{formattedJoinDate.getDate()}{' '}
 								{monthNames[formattedJoinDate.getMonth()]},{' '}
 								{formattedJoinDate.getFullYear()}
 							</p>

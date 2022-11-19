@@ -51,8 +51,14 @@ function Register() {
 			}
 		>
 			<div className="flex my-32 text-center items-center justify-center">
-				<div className=" max-w-lg">
-					<h1 className="text-xl tracking-tight">Signup Page</h1>
+				<div
+					className={
+						darkmode
+							? 'bg-slate-700 shadow-2xl shadow-orange-500 py-10 px-40 rounded-2xl '
+							: 'bg-slate-100 shadow-2xl shadow-slate-500 py-10 px-40 rounded-2xl '
+					}
+				>
+					<h1 className="text-3xl font-bold tracking-wide">Signup</h1>
 
 					<form onSubmit={(e) => handleSubmit(e)}>
 						<div className="grid gap-6 mb-6 md:grid-cols-2">

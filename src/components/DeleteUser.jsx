@@ -23,6 +23,7 @@ function DeleteUser({ userdetails, setIsAuthenticated, setUserDetails }) {
 				setIsAuthenticated(false);
 				setUserDetails('');
 				navigate('/login');
+				alert('User account successfully deleted.');
 			})
 			.catch((err) => console.log(err));
 	};
@@ -36,7 +37,7 @@ function DeleteUser({ userdetails, setIsAuthenticated, setUserDetails }) {
 		<div>
 			{deleteMode ? (
 				<form onSubmit={(e) => handleSubmit(e)}>
-					<h1 className="text-xl">
+					<h1 className="text-sm">
 						Are you sure? All account details and data will be deleted.
 					</h1>
 					<button

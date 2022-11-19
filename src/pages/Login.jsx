@@ -54,8 +54,14 @@ function Login({ setIsAuthenticated, setUserDetails }) {
 			}
 		>
 			<div className="my-32 text-center flex justify-center items-center">
-				<div className="">
-					<h1 className="text-xl tracking-tight">Login Page</h1>
+				<div
+					className={
+						darkmode
+							? 'bg-slate-700 shadow-2xl shadow-orange-500 py-10 px-40 rounded-2xl '
+							: 'bg-slate-100 shadow-2xl shadow-slate-500 py-10 px-40 rounded-2xl '
+					}
+				>
+					<h1 className="text-3xl font-bold tracking-wide">Login</h1>
 
 					<form onSubmit={(e) => handleSubmit(e)}>
 						<div className="grid gap-6 mb-6 md:grid-cols-2"></div>
