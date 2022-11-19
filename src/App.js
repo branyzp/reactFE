@@ -65,7 +65,7 @@ function App() {
 							}
 						/>
 						<Route
-							path="user details"
+							path="user"
 							element={
 								<UserDetails
 									isAuthenticated={isAuthenticated}

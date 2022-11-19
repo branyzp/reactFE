@@ -59,7 +59,7 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 					: 'min-h-screen py-10'
 			}
 		>
-			<div className="flex my-32 text-center items-center justify-center">
+			<div className="flex mt-32 mb-16 text-center items-center justify-center">
 				{updateMode ? (
 					<div
 						className={
@@ -157,24 +157,27 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 							<p className=" text-sm tracking-tighter py-2">
 								Welcome, {newFirstname}.
 							</p>
-							<p className="text-md tracking-tight py-2">
-								{' '}
-								<span className=" font-extrabold">Email:</span> {newEmail}
-							</p>
-							<p className="text-md tracking-tight py-2">
-								<span className=" font-extrabold">First Name:</span>{' '}
-								{newFirstname}
-							</p>
-							<p className="text-md tracking-tight py-2">
-								<span className=" font-extrabold">Last Name: </span>
-								{newLastname}
-							</p>
-							<p className="text-md tracking-tight py-2">
-								<span className=" font-extrabold">Joined Date</span>:{' '}
-								{formattedJoinDate.getDate()}{' '}
-								{monthNames[formattedJoinDate.getMonth()]},{' '}
-								{formattedJoinDate.getFullYear()}
-							</p>
+
+							<div className="grid grid-cols-4">
+								<p className="text-md tracking-tight py-2">
+									{' '}
+									<span className=" font-extrabold">Email:</span> {newEmail}
+								</p>
+								<p className="text-md tracking-tight py-2">
+									<span className=" font-extrabold">First Name:</span>{' '}
+									{newFirstname}
+								</p>
+								<p className="text-md tracking-tight py-2">
+									<span className=" font-extrabold">Last Name: </span>
+									{newLastname}
+								</p>
+								<p className="text-md tracking-tight py-2">
+									<span className=" font-extrabold">Joined Date</span>:{' '}
+									{formattedJoinDate.getDate()}{' '}
+									{monthNames[formattedJoinDate.getMonth()]},{' '}
+									{formattedJoinDate.getFullYear()}
+								</p>
+							</div>
 							<button
 								className={
 									darkmode
@@ -195,6 +198,17 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 						</div>
 					</div>
 				)}
+			</div>
+			<div className="flex mb-32 text-center items-center justify-center">
+				<div
+					className={
+						darkmode
+							? 'bg-slate-700 shadow-2xl shadow-orange-500 py-10 px-40 rounded-2xl '
+							: 'bg-slate-100 shadow-2xl shadow-slate-500 py-10 px-40 rounded-2xl '
+					}
+				>
+					<div className="">To be added</div>
+				</div>
 			</div>
 		</div>
 	);
