@@ -8,8 +8,6 @@ function DarkModeProvider(props) {
 		setDarkmode(!darkmode);
 	};
 
-	console.log('darkmode: ' + darkmode);
-
 	return (
 		<div>
 			<DarkModeContext.Provider value={{ darkmode, toggleDarkMode }}>

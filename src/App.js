@@ -16,9 +16,6 @@ function App() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [userdetails, setUserDetails] = useState('');
 
-	console.log('isAuthenticated: ' + isAuthenticated);
-	console.log('User: ' + userdetails);
-
 	return (
 		<div>
 			<DarkModeProvider>
