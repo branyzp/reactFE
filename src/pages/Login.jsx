@@ -11,7 +11,9 @@ function Login({ setIsAuthenticated, setUserDetails }) {
 
 	const { darkmode } = useContext(DarkModeContext);
 
-	let api = 'http://localhost:8000/api/login';
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com/';
+	let login_api = `${deploy}/api/login`;
 
 	let navigate = useNavigate();
 
@@ -23,7 +25,7 @@ function Login({ setIsAuthenticated, setUserDetails }) {
 		e.preventDefault();
 
 		axios
-			.post(api, {
+			.post(login_api, {
 				username: email.email,
 				password: password.password,
 			})

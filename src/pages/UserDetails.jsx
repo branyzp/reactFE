@@ -29,7 +29,10 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 
 	const [updateMode, setUpdateMode] = useState(false);
 
-	let updateuserdetails_api = 'http://localhost:8000/api/updateuser';
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com/';
+
+	let updateuserdetails_api = `{deploy}api/updateuser`;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

@@ -8,7 +8,10 @@ function DeleteUser({ userdetails, setIsAuthenticated, setUserDetails }) {
 	const { darkmode } = useContext(DarkModeContext);
 	const [deleteMode, setDeleteMode] = useState(false);
 
-	let deleteuser_api = 'http://localhost:8000/api/deleteuser';
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com/';
+
+	let deleteuser_api = `${deploy}/api/deleteuser`;
 
 	let navigate = useNavigate();
 

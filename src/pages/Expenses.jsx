@@ -19,11 +19,15 @@ function Expenses({ userdetails }) {
 		'Other',
 	];
 
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com/';
+	let addexpense_api = `${deploy}/api/addexpense`;
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		axios
-			.post('/api/addexpense', {
+			.post(addexpense_api, {
 				userid: userdetails[0],
 				expenseInt: expenseInt,
 				expenseName: expenseName,

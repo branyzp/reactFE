@@ -11,7 +11,9 @@ function Register() {
 	const [email, setEmail] = useState({ email: '', dirty: false });
 	const [data, setData] = useState('');
 
-	let api = 'http://localhost:8000/api/register';
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com/';
+	let register_api = `${deploy}/api/register`;
 
 	const { darkmode } = useContext(DarkModeContext);
 	let navigate = useNavigate();
@@ -24,7 +26,7 @@ function Register() {
 		e.preventDefault();
 
 		axios
-			.post(api, {
+			.post(register_api, {
 				username: email.email,
 				password: password.password,
 				firstname: firstname.firstname,

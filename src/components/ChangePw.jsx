@@ -10,7 +10,9 @@ function ChangePw({ userdetails }) {
 	const [checkChangePw, setCheckChangePw] = useState(' ');
 	const [oldPw, setOldPw] = useState(' ');
 
-	let updatepw_api = 'http://localhost:8000/api/updatepw';
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com/';
+	let updatepw_api = `${deploy}/api/updatepw`;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
