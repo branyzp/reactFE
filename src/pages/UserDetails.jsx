@@ -33,7 +33,7 @@ function UserDetails({
 	let deploy = 'https://kiamsiap.onrender.com';
 	let addexpense_api = `${deploy}/api/addexpense`;
 	let viewexpense_api = `${deploy}/api/viewexpenses`;
-	let updateuserdetails_api = `${deploy}api/updateuser`;
+	let updateuserdetails_api = `${deploy}/api/updateuser`;
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -182,8 +182,8 @@ function UserDetails({
 					<div
 						className={
 							darkmode
-								? 'bg-slate-700 shadow-2xl shadow-orange-500 py-10 px-40 rounded-2xl '
-								: 'bg-slate-100 shadow-2xl shadow-slate-500 py-10 px-40 rounded-2xl '
+								? 'bg-slate-700 shadow-2xl shadow-orange-500 py-10 px-40 rounded-2xl max-w-5xl '
+								: 'bg-slate-100 shadow-2xl shadow-slate-500 py-10 px-40 rounded-2xl max-w-5xl'
 						}
 					>
 						<h1 className="text-3xl font-bold tracking-wide">User Info</h1>
@@ -223,7 +223,7 @@ function UserDetails({
 									{userExpensesData.length}
 								</p>
 								<p className="text-md tracking-tight py-2">
-									<span className=" font-extrabold">Largest Expense: </span>
+									<span className=" font-extrabold">Largest Amt($): </span>
 									{largestExpenseRef.current}
 								</p>
 							</div>
