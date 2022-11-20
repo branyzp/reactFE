@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContext, useState } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
 
-function Expenses({ userdetails }) {
+function Expenses({ userdetails, setUserExpensesData, userExpensesData }) {
 	const { darkmode } = useContext(DarkModeContext);
 	const [expenseInt, setExpenseInt] = useState('');
 	const [expenseName, setExpenseName] = useState('');
@@ -20,8 +20,23 @@ function Expenses({ userdetails }) {
 	];
 
 	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com/';
+	let deploy = 'https://kiamsiap.onrender.com';
 	let addexpense_api = `${deploy}/api/addexpense`;
+	let viewexpense_api = `${deploy}/api/viewexpenses`;
+
+	useEffect(() => {
+		const fetchData = async () => {
+			await axios
+				.post(viewexpense_api, {
+					userid: userdetails[0],
+				})
+				.then((res) => {
+					setUserExpensesData(res.data);
+					console.log(res.data);
+				});
+		};
+		fetchData();
+	}, []);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -37,6 +52,7 @@ function Expenses({ userdetails }) {
 			})
 			.then((res) => {
 				console.log(res.data);
+				setUserExpensesData(...userExpensesData, res.data);
 				alert('Expense saved');
 			});
 	};
@@ -118,7 +134,6 @@ function Expenses({ userdetails }) {
 								rows={5}
 								cols={5}
 								type="text"
-								required
 								className=" bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								onChange={(e) => {
 									setExpenseComments(e.target.value);

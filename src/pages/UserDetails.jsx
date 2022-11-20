@@ -1,16 +1,59 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import axios from 'axios';
 import { DarkModeContext } from '../context/DarkModeContext';
 import ChangePw from '../components/ChangePw';
 import DeleteUser from '../components/DeleteUser';
 
-function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
+function UserDetails({
+	userdetails,
+	setIsAuthenticated,
+	setUserDetails,
+	userExpensesData,
+	setUserExpensesData,
+}) {
 	const { darkmode } = useContext(DarkModeContext);
 	const [newEmail, setNewEmail] = useState(userdetails[1]);
 	const [newFirstname, setNewFirstname] = useState(userdetails[3]);
 	const [newLastname, setNewLastname] = useState(userdetails[4]);
 	const [joinedDate, setJoinedDate] = useState(userdetails[5]);
 	let formattedJoinDate = new Date(joinedDate);
+
+	const largestExpenseRef = useRef(0);
+
+	// useEffect(() => {
+	// 	for (let i in userExpensesData) {
+	// 		if (userExpensesData[i][4] > largestExpenseRef.current) {
+	// 			largestExpenseRef.current = userExpensesData[i][4];
+	// 			console.log(largestExpenseRef.current);
+	// 		}
+	// 	}
+	// }, [userExpensesData]);
+
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com';
+	let addexpense_api = `${deploy}/api/addexpense`;
+	let viewexpense_api = `${deploy}/api/viewexpenses`;
+	let updateuserdetails_api = `${deploy}api/updateuser`;
+
+	useEffect(() => {
+		const fetchData = async () => {
+			await axios
+				.post(viewexpense_api, {
+					userid: userdetails[0],
+				})
+				.then((res) => {
+					setUserExpensesData(res.data);
+					console.log(res.data);
+				});
+			for (let i in userExpensesData) {
+				if (userExpensesData[i][4] > largestExpenseRef.current) {
+					largestExpenseRef.current = userExpensesData[i][4];
+					console.log(largestExpenseRef.current);
+				}
+			}
+		};
+		fetchData();
+	}, []);
 
 	const monthNames = [
 		'Jan',
@@ -28,11 +71,6 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 	];
 
 	const [updateMode, setUpdateMode] = useState(false);
-
-	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com/';
-
-	let updateuserdetails_api = `${deploy}api/updateuser`;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -161,7 +199,7 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 								Welcome, {newFirstname}.
 							</p>
 
-							<div className="grid grid-cols-4">
+							<div className="grid grid-cols-3">
 								<p className="text-md tracking-tight py-2">
 									{' '}
 									<span className=" font-extrabold">Email:</span> {newEmail}
@@ -179,6 +217,14 @@ function UserDetails({ userdetails, setIsAuthenticated, setUserDetails }) {
 									{formattedJoinDate.getDate()}{' '}
 									{monthNames[formattedJoinDate.getMonth()]},{' '}
 									{formattedJoinDate.getFullYear()}
+								</p>
+								<p className="text-md tracking-tight py-2">
+									<span className=" font-extrabold">Logged Expenses: </span>
+									{userExpensesData.length}
+								</p>
+								<p className="text-md tracking-tight py-2">
+									<span className=" font-extrabold">Largest Expense: </span>
+									{largestExpenseRef.current}
 								</p>
 							</div>
 							<button

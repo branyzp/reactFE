@@ -15,6 +15,7 @@ import Expenses from './pages/Expenses';
 function App() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [userdetails, setUserDetails] = useState('');
+	const [userExpensesData, setUserExpensesData] = useState('');
 
 	return (
 		<div>
@@ -39,6 +40,8 @@ function App() {
 								<Dashboard
 									isAuthenticated={isAuthenticated}
 									userdetails={userdetails}
+									setUserExpensesData={setUserExpensesData}
+									userExpensesData={userExpensesData}
 								/>
 							}
 						/>
@@ -48,6 +51,8 @@ function App() {
 								<Expenses
 									isAuthenticated={isAuthenticated}
 									userdetails={userdetails}
+									setUserExpensesData={setUserExpensesData}
+									userExpensesData={userExpensesData}
 								/>
 							}
 						/>
@@ -69,6 +74,8 @@ function App() {
 									userdetails={userdetails}
 									setIsAuthenticated={setIsAuthenticated}
 									setUserDetails={setUserDetails}
+									userExpensesData={userExpensesData}
+									setUserExpensesData={setUserExpensesData}
 								/>
 							}
 						/>

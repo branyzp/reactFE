@@ -2,15 +2,26 @@ import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { DarkModeContext } from '../context/DarkModeContext';
 
-function Dashboard({ userdetails }) {
+function Dashboard({ userdetails, setUserExpensesData, userExpensesData }) {
 	const { darkmode } = useContext(DarkModeContext);
 
-	// useEffect(() => {
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com';
+	let viewexpense_api = `${deploy}/api/viewexpenses`;
 
-	//   return () => {
-	// 	second
-	//   }
-	// }, [third])
+	useEffect(() => {
+		const fetchData = async () => {
+			await axios
+				.post(viewexpense_api, {
+					userid: userdetails[0],
+				})
+				.then((res) => {
+					setUserExpensesData(res.data);
+					console.log(res.data);
+				});
+		};
+		fetchData();
+	}, []);
 
 	return (
 		<div
