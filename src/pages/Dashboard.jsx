@@ -33,6 +33,26 @@ function Dashboard({ userdetails, setUserExpensesData, userExpensesData }) {
 		>
 			<div className="my-32 text-center">
 				<h1 className="text-3xl font-bold tracking-wide">Dashboard Page</h1>
+				<div
+					className={
+						darkmode
+							? 'bg-slate-700 shadow-2xl shadow-orange-500 py-10 px-40 rounded-2xl '
+							: 'bg-slate-100 shadow-2xl shadow-slate-500 py-10 px-40 rounded-2xl '
+					}
+				>
+					<div className="">
+						<h1 className="text-xl font-bold tracking-wide">
+							Expenses Summary
+						</h1>
+						{userExpensesData ? (
+							userExpensesData.map((e, i) => {
+								return <li index={i}>{e[0]}</li>;
+							})
+						) : (
+							<div>hi</div>
+						)}
+					</div>
+				</div>
 			</div>
 		</div>
 	);
