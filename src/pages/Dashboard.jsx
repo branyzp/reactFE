@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { DarkModeContext } from '../context/DarkModeContext';
+import { useNavigate } from 'react-router-dom';
+import { VscTrash } from 'react-icons/vsc';
 
 function Dashboard({
 	api,
@@ -10,7 +12,25 @@ function Dashboard({
 }) {
 	const { darkmode } = useContext(DarkModeContext);
 
+	let navigate = useNavigate();
+
 	let viewexpense_api = `${api}/api/viewexpenses`;
+	let deleteexpense_api = `${api}/api/deleteexpense`;
+
+	const handleClick = (route) => {
+		navigate(route);
+	};
+
+	const handleDelete = (id) => {
+		axios.delete(deleteexpense_api, {
+			data: {
+				id: id,
+			},
+		});
+		setUserExpensesData(
+			userExpensesData.filter((expense) => expense[0] !== id)
+		);
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -34,8 +54,7 @@ function Dashboard({
 					: 'min-h-screen py-10'
 			}
 		>
-			<div className="my-32 text-center">
-				<h1 className="text-3xl font-bold tracking-wide">Dashboard Page</h1>
+			<div className="flex mt-32 mb-16 text-center items-center justify-center">
 				<div
 					className={
 						darkmode
@@ -47,12 +66,49 @@ function Dashboard({
 						<h1 className="text-xl font-bold tracking-wide">
 							Expenses Summary
 						</h1>
-						{userExpensesData ? (
+
+						{userExpensesData.length > 0 ? (
 							userExpensesData.map((e, i) => {
-								return <li index={i}>{e[3]}</li>;
+								return (
+									<div index={i}>
+										{/* <li className=" list-decimal" index={i}>
+											
+										</li> */}
+										{e[3]} - ${e[4]}{' '}
+										<button
+											onClick={() => {
+												handleDelete(e[0]);
+											}}
+											className={
+												darkmode
+													? 'rounded-xl bg-yellow-500 hover:bg-yellow-400 text-slate-700 font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-600 hover:scale-105 ease-in duration-100'
+													: 'rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 hover:scale-105 ease-in duration-100'
+											}
+										>
+											<VscTrash />
+										</button>
+									</div>
+								);
 							})
 						) : (
-							<div>hi</div>
+							<div>
+								<p className="py-5">
+									You do not have any existing expenses added.
+								</p>
+
+								<button
+									onClick={() => {
+										handleClick('/expenses');
+									}}
+									className={
+										darkmode
+											? 'rounded-xl bg-yellow-500 hover:bg-yellow-400 text-slate-700 font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-600 hover:scale-105 ease-in duration-100'
+											: 'rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 hover:scale-105 ease-in duration-100'
+									}
+								>
+									Add an expense
+								</button>
+							</div>
 						)}
 					</div>
 				</div>
