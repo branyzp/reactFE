@@ -2,12 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { DarkModeContext } from '../context/DarkModeContext';
 
-function Dashboard({ userdetails, setUserExpensesData, userExpensesData }) {
+function Dashboard({
+	api,
+	userdetails,
+	setUserExpensesData,
+	userExpensesData,
+}) {
 	const { darkmode } = useContext(DarkModeContext);
 
-	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com';
-	let viewexpense_api = `${deploy}/api/viewexpenses`;
+	let viewexpense_api = `${api}/api/viewexpenses`;
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -46,7 +49,7 @@ function Dashboard({ userdetails, setUserExpensesData, userExpensesData }) {
 						</h1>
 						{userExpensesData ? (
 							userExpensesData.map((e, i) => {
-								return <li index={i}>{e[0]}</li>;
+								return <li index={i}>{e[3]}</li>;
 							})
 						) : (
 							<div>hi</div>

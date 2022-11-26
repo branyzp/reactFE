@@ -4,14 +4,11 @@ import { DarkModeContext } from '../context/DarkModeContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function DeleteUser({ userdetails, setIsAuthenticated, setUserDetails }) {
+function DeleteUser({ api, userdetails, setIsAuthenticated, setUserDetails }) {
 	const { darkmode } = useContext(DarkModeContext);
 	const [deleteMode, setDeleteMode] = useState(false);
 
-	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com/';
-
-	let deleteuser_api = `${deploy}/api/deleteuser`;
+	let deleteuser_api = `${api}/api/deleteuser`;
 
 	let navigate = useNavigate();
 

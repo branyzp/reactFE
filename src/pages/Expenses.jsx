@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useContext, useState } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
 
-function Expenses({ userdetails, setUserExpensesData, userExpensesData }) {
+function Expenses({ api, userdetails, setUserExpensesData, userExpensesData }) {
 	const { darkmode } = useContext(DarkModeContext);
 	const [expenseInt, setExpenseInt] = useState('');
 	const [expenseName, setExpenseName] = useState('');
@@ -19,10 +19,8 @@ function Expenses({ userdetails, setUserExpensesData, userExpensesData }) {
 		'Other',
 	];
 
-	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com';
-	let addexpense_api = `${deploy}/api/addexpense`;
-	let viewexpense_api = `${deploy}/api/viewexpenses`;
+	let addexpense_api = `${api}/api/addexpense`;
+	let viewexpense_api = `${api}/api/viewexpenses`;
 
 	useEffect(() => {
 		const fetchData = async () => {

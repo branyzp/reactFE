@@ -4,16 +4,14 @@ import { useState, useContext } from 'react';
 import axios from 'axios';
 import { DarkModeContext } from '../context/DarkModeContext';
 
-function Login({ setIsAuthenticated, setUserDetails }) {
+function Login({ api, setIsAuthenticated, setUserDetails }) {
 	const [password, setPassword] = useState({ password: '', dirty: false });
 	const [email, setEmail] = useState({ email: '', dirty: false });
 	// const [data, setData] = useState('');
 
 	const { darkmode } = useContext(DarkModeContext);
 
-	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com/';
-	let login_api = `${deploy}/api/login`;
+	let login_api = `${api}/api/login`;
 
 	let navigate = useNavigate();
 

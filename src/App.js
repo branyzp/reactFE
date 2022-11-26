@@ -17,6 +17,10 @@ function App() {
 	const [userdetails, setUserDetails] = useState('');
 	const [userExpensesData, setUserExpensesData] = useState('');
 
+	let local = 'http://localhost:8000';
+	let deploy = 'https://kiamsiap.onrender.com';
+	let api = local;
+
 	return (
 		<div>
 			<DarkModeProvider>
@@ -29,6 +33,7 @@ function App() {
 							path="/login"
 							element={
 								<Login
+									api={api}
 									setIsAuthenticated={setIsAuthenticated}
 									setUserDetails={setUserDetails}
 								/>
@@ -38,6 +43,7 @@ function App() {
 							path="/dashboard"
 							element={
 								<Dashboard
+									api={api}
 									isAuthenticated={isAuthenticated}
 									userdetails={userdetails}
 									setUserExpensesData={setUserExpensesData}
@@ -49,6 +55,7 @@ function App() {
 							path="/expenses"
 							element={
 								<Expenses
+									api={api}
 									isAuthenticated={isAuthenticated}
 									userdetails={userdetails}
 									setUserExpensesData={setUserExpensesData}
@@ -60,6 +67,7 @@ function App() {
 							path="/logout"
 							element={
 								<Logout
+									api={api}
 									isAuthenticated={isAuthenticated}
 									setIsAuthenticated={setIsAuthenticated}
 									setUserDetails={setUserDetails}
@@ -70,6 +78,7 @@ function App() {
 							path="user"
 							element={
 								<UserDetails
+									api={api}
 									isAuthenticated={isAuthenticated}
 									userdetails={userdetails}
 									setIsAuthenticated={setIsAuthenticated}

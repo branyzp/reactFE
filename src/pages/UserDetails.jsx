@@ -5,6 +5,7 @@ import ChangePw from '../components/ChangePw';
 import DeleteUser from '../components/DeleteUser';
 
 function UserDetails({
+	api,
 	userdetails,
 	setIsAuthenticated,
 	setUserDetails,
@@ -29,11 +30,9 @@ function UserDetails({
 	// 	}
 	// }, [userExpensesData]);
 
-	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com';
-	let addexpense_api = `${deploy}/api/addexpense`;
-	let viewexpense_api = `${deploy}/api/viewexpenses`;
-	let updateuserdetails_api = `${deploy}/api/updateuser`;
+	let addexpense_api = `${api}/api/addexpense`;
+	let viewexpense_api = `${api}/api/viewexpenses`;
+	let updateuserdetails_api = `${api}/api/updateuser`;
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -171,8 +170,9 @@ function UserDetails({
 								Back
 							</button>
 						</form>
-						<ChangePw userdetails={userdetails} />
+						<ChangePw api={api} userdetails={userdetails} />
 						<DeleteUser
+							api={api}
 							userdetails={userdetails}
 							setIsAuthenticated={setIsAuthenticated}
 							setUserDetails={setUserDetails}
@@ -238,8 +238,9 @@ function UserDetails({
 								Update User Details
 							</button>
 
-							<ChangePw userdetails={userdetails} />
+							<ChangePw api={api} userdetails={userdetails} />
 							<DeleteUser
+								api={api}
 								userdetails={userdetails}
 								setIsAuthenticated={setIsAuthenticated}
 								setUserDetails={setUserDetails}

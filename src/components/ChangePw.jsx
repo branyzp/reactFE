@@ -3,16 +3,14 @@ import { useContext } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
 import axios from 'axios';
 
-function ChangePw({ userdetails }) {
+function ChangePw({ api, userdetails }) {
 	const { darkmode } = useContext(DarkModeContext);
 	const [updatePw, setUpdatePw] = useState(false);
 	const [changePw, setChangePw] = useState(' ');
 	const [checkChangePw, setCheckChangePw] = useState(' ');
 	const [oldPw, setOldPw] = useState(' ');
 
-	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com/';
-	let updatepw_api = `${deploy}/api/updatepw`;
+	let updatepw_api = `${api}/api/updatepw`;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

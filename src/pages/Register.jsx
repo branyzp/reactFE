@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { DarkModeContext } from '../context/DarkModeContext';
 
-function Register() {
+function Register({ api }) {
 	const [firstname, setFirstname] = useState({ firstname: '', dirty: false });
 	const [lastname, setLastname] = useState({ lastname: '', dirty: false });
 	const [password, setPassword] = useState({ password: '', dirty: false });
@@ -11,9 +11,7 @@ function Register() {
 	const [email, setEmail] = useState({ email: '', dirty: false });
 	const [data, setData] = useState('');
 
-	let local = 'http://localhost:8000';
-	let deploy = 'https://kiamsiap.onrender.com/';
-	let register_api = `${deploy}/api/register`;
+	let register_api = `${api}/api/register`;
 
 	const { darkmode } = useContext(DarkModeContext);
 	let navigate = useNavigate();
