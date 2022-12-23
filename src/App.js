@@ -19,7 +19,7 @@ function App() {
 
 	let local = 'http://localhost:8000';
 	let deploy = 'https://kiamsiap.onrender.com';
-	let api = local;
+	let api = deploy;
 
 	return (
 		<div>
