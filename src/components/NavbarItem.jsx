@@ -9,14 +9,12 @@ function NavbarItem({ navitem }) {
 	};
 
 	return (
-		<Link to={`/${navitem}`}>
-			<li
-				className="ml-10 py-4 text-sm uppercase hover:underline"
-				onClick={() => handleClick(`/${navitem}`)}
-			>
-				<p className="text-sm tracking-widest">{navitem}</p>
-			</li>
-		</Link>
+		<li
+			className="ml-10 py-4 text-sm uppercase hover:underline hover:cursor-pointer"
+			onClick={() => handleClick(`/${navitem}`)}
+		>
+			<p className="text-sm tracking-widest">{navitem}</p>
+		</li>
 	);
 }
 

@@ -68,9 +68,9 @@ function Dashboard({
 						</h1>
 
 						{userExpensesData.length > 0 ? (
-							userExpensesData.map((e, i) => {
+							userExpensesData.map((e, index) => {
 								return (
-									<div index={i}>
+									<div key={index}>
 										{/* <li className=" list-decimal" index={i}>
 											
 										</li> */}
