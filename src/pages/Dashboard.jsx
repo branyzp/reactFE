@@ -47,6 +47,7 @@ function Dashboard({
 	}, []);
 
 	return (
+		
 		<div
 			className={
 				darkmode
@@ -71,9 +72,7 @@ function Dashboard({
 							userExpensesData.map((e, index) => {
 								return (
 									<div key={index}>
-										{/* <li className=" list-decimal" index={i}>
-											
-										</li> */}
+										
 										{e[3]} - ${e[4]}{' '}
 										<button
 											onClick={() => {

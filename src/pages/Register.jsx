@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios, { AxiosHeaders } from 'axios';
 import { DarkModeContext } from '../context/DarkModeContext';
 
 function Register({ api }) {
@@ -12,6 +12,8 @@ function Register({ api }) {
 	const [data, setData] = useState('');
 
 	let register_api = `${api}/api/register`;
+
+	console.log(register_api);
 
 	const { darkmode } = useContext(DarkModeContext);
 	let navigate = useNavigate();
@@ -38,7 +40,7 @@ function Register({ api }) {
 			})
 			.catch((err) => {
 				console.log(err);
-				alert('Register failed');
+				alert('Register failed with error code ' + err);
 			});
 	};
 

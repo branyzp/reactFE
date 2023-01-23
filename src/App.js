@@ -28,7 +28,7 @@ function App() {
 					<Navbar isAuthenticated={isAuthenticated} />
 					<Routes>
 						<Route path="/" element={<Index />} />
-						<Route path="/register" element={<Register />} />
+						<Route path="/register" element={<Register api={api} />} />
 						<Route
 							path="/login"
 							element={
